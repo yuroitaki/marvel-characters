@@ -1,0 +1,45 @@
+{
+  "name": "marvel-characters",
+  "version": "1.0.0",
+  "description": "A Node.js implementation of RESTful APIs to fetch Marvel character information",
+  "main": "index.js",
+  "engines": {
+    "node": ">=8",
+    "yarn": "*"
+  },
+  "scripts": {
+    "dev": "nodemon ./src/index.js",
+    "test": "jest --forceExit --detectOpenHandles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuroitaki/marvel-characters.git"
+  },
+  "author": "Christopher Chong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuroitaki/marvel-characters/issues"
+  },
+  "homepage": "https://github.com/yuroitaki/marvel-characters#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^17.4.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "eslint": "^7.27.0",
+    "eslint-config-astro": "^1.0.8",
+    "eslint-plugin-import": "^2.23.3",
+    "jest": "^27.0.1",
+    "jest-extended": "^0.11.5",
+    "nodemon": "^2.0.7"
+  },
+  "jest": {
+    "testRegex": "(/src/.*)\\.test.js$",
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
+  }
+}
