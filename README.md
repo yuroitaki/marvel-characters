@@ -1,4 +1,4 @@
-## Requirements:
+## Requirements
 
  - [Node v7.6+](https://nodejs.org/en/download/current/)
  - [Yarn](https://yarnpkg.com/en/docs/install)
@@ -31,3 +31,15 @@ yarn dev
 ```bash
 yarn test
 ```
+
+## Caching Strategy
+- When there is no cache upon the first API call, all character ids are fetched from the external Marvel API
+- Then they are stored in an object together with a cached date in Redis
+```json
+{
+  characters: [1, 2, 3]
+  timestamp: '2021-05-16'
+}
+```
+- When cache is found upon subsequent API call, all character ids are extracted from Redis, together with the timestamp 
+- The timestamp is used to call the external Marvel API by being passed in as `modifiedSince` to fetch any additional characters that have been added since the cached date
