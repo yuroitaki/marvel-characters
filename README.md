@@ -37,8 +37,8 @@ yarn test
 - Then they are stored in an object together with a cached date in Redis
 ```json
 {
-  characters: [1, 2, 3]
-  timestamp: '2021-05-16'
+  "characters": [1, 2, 3],
+  "timestamp": "2021-05-16"
 }
 ```
 - When cache is found upon subsequent API call, all character ids are extracted from Redis, together with the timestamp 
