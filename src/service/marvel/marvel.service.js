@@ -110,6 +110,40 @@ const listCharactersWrapper = async () => {
   }
 };
 
+const processGetCharacter = (data) => {
+  try {
+    const character = data.data.results[0];
+    const processedData = {
+      id: character.id,
+      name: character.name,
+      description: character.description
+    };
+    if (hasNullOrUndefinedItem(Object.values(processedData))) {
+      throw new Error('INVALID_RESPONSE_GET_MARVEL_CHARACTERS');
+    }
+    return processedData;
+  } catch (error) {
+    console.error('INVALID_RESPONSE_GET_MARVEL_CHARACTERS', { data });
+    throw error;
+  }
+};
+
+const getCharacter = async (characterId) => {
+  const authString = constructAuthentication();
+  let requestUrl = `${marvelConfig.domain}${marvelConfig.charactersEndpoint}`;
+  requestUrl += `/${characterId}?${authString}`;
+  try {
+    console.log('GET_MARVEL_CHARACTER_REQUEST', { requestUrl });
+    const { data } = await getRequest(requestUrl);
+    console.log('GET_MARVEL_CHARACTER_RESPONSE', data);
+    return processGetCharacter(data);
+  } catch (error) {
+    console.error('GET_MARVEL_CHARACTER_FAILED', { error, characterId });
+    throw error;
+  }
+};
+
 module.exports = {
-  listCharactersWrapper
+  listCharactersWrapper,
+  getCharacter
 };

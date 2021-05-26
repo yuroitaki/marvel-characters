@@ -10,6 +10,7 @@ describe('Service - marvel', () => {
   let listCharactersResp;
   let emptyListCharacterResp;
   let cachedItem;
+  let getCharacterResp;
 
   beforeEach(() => {
     listCharactersResp = {
@@ -30,6 +31,17 @@ describe('Service - marvel', () => {
     cachedItem = {
       characters: [1, 2],
       timestamp: '2021-05-26'
+    };
+    getCharacterResp = {
+      data: {
+        results: [
+          {
+            id: 1,
+            name: 'Abomination (Emil Blonsky)',
+            description: 'Formerly known as Emil Blonsky, a spy of Soviet Yugoslavian origin working for the KGB, the Abomination gained his powers after receiving a dose of gamma radiation similar to that which transformed Bruce Banner into the incredible Hulk.'
+          }
+        ]
+      }
     };
   });
 
@@ -73,5 +85,33 @@ describe('Service - marvel', () => {
 
     const result = await service.listCharactersWrapper();
     expect(result).toBeArrayOfSize(cachedItem.characters.length);
+  });
+
+  it('Should be able to return marvel character details ', async () => {
+    getRequest.mockResolvedValue({ data: getCharacterResp });
+
+    const result = await service.getCharacter();
+    expect(result).toBeObject();
+    expect(result.id).toEqual(getCharacterResp.data.results[0].id);
+    expect(result.name).toEqual(getCharacterResp.data.results[0].name);
+    expect(result.description).toEqual(getCharacterResp.data.results[0].description);
+  });
+
+  it('Should fail to get marvel character details if external api fails', (done) => {
+    getRequest.mockRejectedValue(new Error('GET_MARVEL_CHARACTER_FAILED'));
+
+    service.getCharacter().catch((error) => {
+      expect(error).toBeObject();
+      done();
+    });
+  });
+
+  it('Should fail to get marvel character ids if external api returns invalid response', (done) => {
+    getRequest.mockResolvedValue({ data: {} });
+
+    service.getCharacter().catch((error) => {
+      expect(error).toBeObject();
+      done();
+    });
   });
 });

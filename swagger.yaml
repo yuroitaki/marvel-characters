@@ -1,0 +1,66 @@
+swagger: "2.0"
+info:
+  title: Marvel API
+  description: Marvel APIs to fetch list of character ids and specific character details
+  version: 0.0.1
+  contact:
+    email: "t.kleinchong@gmail.com"
+host: "localhost:8080"
+basePath: "/api"
+schemes:
+- "http"
+tags:
+- name: "characters"
+  description: "Everything about Marvel characters"
+paths:
+  /characters:
+    get:
+      tags:
+      - "characters"
+      summary: "Fetch list of character ids"
+      description: "Retrieve the full list of character ids"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "A JSON array of character"
+          schema:
+            type: "array"
+            items:
+              type: integer
+        "500":
+          description: "Interal server error"
+  /characters/{characterId}:
+    get:
+      tags:
+      - "characters"
+      summary: "Fetch a single character"
+      description: "Retrieve the details of a single character"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "characterId"
+        in: "path"
+        description: "Id of a character"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "A JSON object of character details"
+          schema:
+            $ref: "#/definitions/Character"
+        "500":
+          description: "Interal server error"
+definitions:
+  Character:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      description:
+        type: "string"
+
+
+
