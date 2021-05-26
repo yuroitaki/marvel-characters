@@ -1,6 +1,13 @@
 const axios = require('axios');
 const { https } = require('../../config/vars');
 
+/**
+ * Axios method to make GET request
+ * @param {String} url
+ * @param {Object} headers
+ * @param {Number} timeout
+ * @returns {Object} result
+ */
 const getRequest = async (url, headers, timeout = https.timeout) => {
   const method = 'GET';
   try {

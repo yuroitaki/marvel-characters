@@ -16,7 +16,6 @@ describe('Service - marvel', () => {
     listCharactersResp = {
       data: {
         total: 100,
-        count: 100,
         results: [
           {
             id: 1
@@ -27,7 +26,12 @@ describe('Service - marvel', () => {
         ]
       }
     };
-    emptyListCharacterResp = { data: { total: 0, count: 0, results: [] } };
+    emptyListCharacterResp = {
+      data: {
+        total: 0,
+        results: []
+      }
+    };
     cachedItem = {
       characters: [1, 2],
       timestamp: '2021-05-26'

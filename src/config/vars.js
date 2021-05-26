@@ -4,9 +4,7 @@ module.exports = {
   port: process.env.PORT,
   serviceName: 'marvelCharacters',
   https: {
-    timeout: 5000,
-    responseType: 'json',
-    responseEncoding: 'utf8'
+    timeout: 5000
   },
   marvelConfig: {
     domain: 'https://gateway.marvel.com:443',

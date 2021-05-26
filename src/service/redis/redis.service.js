@@ -14,6 +14,11 @@ try {
   console.error('REDIS_PROMOSIFYING_METHOD_FAILED', { error });
 }
 
+/**
+ * Fetch cached item from cache
+ * @param {String} cacheKey
+ * @returns {Object} item
+ */
 const fetchCachedItem = async (cacheKey) => {
   try {
     const cachedData = await redisClient.getAsync(cacheKey);
@@ -29,6 +34,13 @@ const fetchCachedItem = async (cacheKey) => {
   }
 };
 
+/**
+ * Store item in cache
+ * @param {Object} item
+ * @param {String} itemKey
+ * @param {String} cacheKey
+ * @returns {Boolean} result
+ */
 const cacheItem = async (item, itemKey, cacheKey) => {
   try {
     const today = new Date().toISOString().slice(0, 10);

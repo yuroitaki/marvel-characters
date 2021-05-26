@@ -7,7 +7,7 @@
 ## Installation
 
 1. Install Node, Yarn, Redis from links above or via command line
-2. Install node dependencies 
+2. Install Node dependencies 
 ```bash
 yarn
 ```
@@ -21,7 +21,7 @@ cp .env.example .env
 ```bash
 redis-server
 ```
-2. Start node server
+2. Start Node server
 ```bash
 yarn dev
 ```
