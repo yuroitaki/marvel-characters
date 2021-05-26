@@ -18,10 +18,9 @@ const getRequest = async (url, headers, timeout = https.timeout) => {
     return result;
   } catch (error) {
     console.log('GET_REQUEST_FAILED', {
-      error,
-      url,
-      method,
-      headers
+      message: error.message,
+      responseData: error.response.data,
+      response: error.response
     });
     throw error;
   }

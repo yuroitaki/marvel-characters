@@ -7,5 +7,11 @@ module.exports = {
     timeout: 5000,
     responseType: 'json',
     responseEncoding: 'utf8'
+  },
+  marvelConfig: {
+    domain: 'https://gateway.marvel.com:443',
+    publicKey: process.env.MARVEL_PUBLIC_KEY,
+    privateKey: process.env.MARVEL_PRIVATE_KEY,
+    charactersEndpoint: '/v1/public/characters'
   }
 };

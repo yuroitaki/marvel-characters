@@ -9,7 +9,7 @@ describe('Service - https', () => {
   let getResponse;
 
   beforeEach(() => {
-    url = 'https://reqres.in/api/products/3';
+    url = 'https://test/api/getrequest';
     headers = {};
     getResponse = {
       data: 'data'
