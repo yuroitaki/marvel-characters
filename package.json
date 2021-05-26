@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "test": "jest --forceExit --detectOpenHandles"
+    "test": "jest --forceExit"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,8 @@
     "http-status": "^1.5.0",
     "joi": "^17.4.0",
     "lodash": "^4.17.21",
-    "md5": "^2.3.0"
+    "md5": "^2.3.0",
+    "redis": "^3.1.2"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",

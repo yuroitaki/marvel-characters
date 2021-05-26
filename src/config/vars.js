@@ -12,6 +12,11 @@ module.exports = {
     domain: 'https://gateway.marvel.com:443',
     publicKey: process.env.MARVEL_PUBLIC_KEY,
     privateKey: process.env.MARVEL_PRIVATE_KEY,
-    charactersEndpoint: '/v1/public/characters'
+    charactersEndpoint: '/v1/public/characters',
+    characterLimit: 100
+  },
+  redisConfig: {
+    port: process.env.REDIS_PORT,
+    cacheKey: 'cached-characters'
   }
 };
